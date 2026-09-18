@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAN4103 CA: Funding Proposal Guided Template</title>
+  <style>
+    :root {
+      --primary: #1a56db;
+      --primary-dark: #1e429f;
+      --accent: #046c4e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --blank-bg: #f0fdf4;
+      --blank-border: #86efac;
+      --tag-bg: #e0e7ff;
+      --tag-text: #3730a3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e429f, #2563eb);
+      color: white;
+      padding: 32px 28px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+      align-items: center;
+      background: white;
+      padding: 14px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    button.secondary {
+      background-color: #f1f5f9;
+      color: var(--text);
+      border: 1px solid #cbd5e1;
+    }
+
+    button.secondary:hover {
+      background-color: #e2e8f0;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .card-header {
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .source-badge {
+      font-size: 0.75rem;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+
+    .prompt-block {
+      background-color: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .template-text {
+      font-size: 1rem;
+      line-height: 2.2;
+      color: #1e293b;
+    }
+
+    .blank-wrapper {
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: middle;
+      margin: 2px 4px;
+    }
+
+    .blank-input {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 0.95rem;
+      border: 1px solid #94a3b8;
+      border-radius: 4px;
+      background: #ffffff;
+      color: #0f172a;
+      min-width: 140px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .blank-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .blank-hint {
+      font-size: 0.72rem;
+      color: #047857;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-top: 2px;
+    }
+
+    .live-preview-box {
+      background: #ffffff;
+      border: 2px dashed #94a3b8;
+      border-radius: 8px;
+      padding: 20px;
+      font-family: Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #334155;
+      white-space: pre-wrap;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      header, .toolbar, .live-preview-box, #preview-section, button {
+        display: none !important;
+      }
+      .card {
+        border: 1px solid #ccc;
+        box-shadow: none;
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+      }
+      .blank-input {
+        border-bottom: 1px solid #000 !important;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+        background: transparent !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>LAN4103 Continuous Assessment: Funding Proposal</h1>
+    <p>Interactive Fill-in-the-Blanks Template & Language Skills Guide</p>
+  </header>
+
+  <div class="toolbar">
+    <button onclick="window.print()">Print / Export Worksheet</button>
+    <button class="secondary" onclick="toggleHints()">Toggle Grammar Hints</button>
+    <button class="secondary" onclick="clearAll()">Clear All Fields</button>
+    <button class="secondary" onclick="copyPreview()">Copy Completed Proposal</button>
+  </div>
+
+  <!-- STEP 1 -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-title">Step 1: Organisation Information (Unit 2)</div>
+      <span class="source-badge">Source: Organisation Homepage</span>
+    </div>
+    <div class="prompt-block">
+      Formula: [Past participle, "-ed"] + in + [Year], [Organisation name] + is a/an + [business nature] + [specialisation participle] + [core area]. Additionally, we + [verb] + [services] to + [purpose].
+    </div>
+    <div class="template-text">
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b1" placeholder="e.g. Formed / Established" oninput="updatePreview()">
+        <span class="blank-hint">(1) Past participle, "-ed"</span>
+      </span>
+      in 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b2" placeholder="e.g. 2013" oninput="updatePreview()">
+        <span class="blank-hint">(2) Founding year</span>
+      </span>, 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b3" placeholder="e.g. InnoDesign" oninput="updatePreview()">
+        <span class="blank-hint">(3) Organisation name</span>
+      </span>
+      is a/an 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b4" placeholder="e.g. product design consultancy" oninput="updatePreview()">
+        <span class="blank-hint">(4) Business nature</span>
+      </span>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b5" placeholder="e.g. devoted to / dedicated to" oninput="updatePreview()">
+        <span class="blank-hint">(5) Specialising in / devoted to</span>
+      </span>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b6" placeholder="e.g. offering prototyping services" oninput="updatePreview()">
+        <span class="blank-hint">(6) Core expertise (verb-ing / noun)</span>
+      </span>.
+      <br><br>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b7" placeholder="e.g. Additionally, / Also," oninput="updatePreview()">
+        <span class="blank-hint">(7) Transition</span>
+      </span>
+      we 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b8" placeholder="e.g. host / run / offer" oninput="updatePreview()">
+        <span class="blank-hint">(8) Active service verb</span>
+      </span>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b9" placeholder="e.g. community workshops" oninput="updatePreview()">
+        <span class="blank-hint">(9) Regular services/events</span>
+      </span>
+      to 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b10" placeholder="e.g. engage participants in design activities" oninput="updatePreview()">
+        <span class="blank-hint">(10) Purpose (base verb + object)</span>
+      </span>.
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-title">Step 2: Project Details (Unit 3)</div>
+      <span class="source-badge">Source: Notes of Meeting</span>
+    </div>
+    <div class="prompt-block">
+      Identify durations and actions for each phase, followed by the passive total cost formula.
+    </div>
+    <div class="template-text">
+      <strong>a. Implementation:</strong><br>
+      The project will be completed in 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b11" placeholder="e.g. three phases" oninput="updatePreview()">
+        <span class="blank-hint">(11) Stages / phases</span>
+      </span>, 
+      each 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b12" placeholder="e.g. lasting / spanning" oninput="updatePreview()">
+        <span class="blank-hint">(12) lasting / spanning</span>
+      </span>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b13" placeholder="e.g. two months" oninput="updatePreview()">
+        <span class="blank-hint">(13) Duration</span>
+      </span>. 
+      In 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b14" placeholder="e.g. phase 1" oninput="updatePreview()">
+        <span class="blank-hint">(14) Phase 1 / Stage 1</span>
+      </span>, 
+      we will 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b15" placeholder="e.g. finalise the screenplay and cast actors" oninput="updatePreview()">
+        <span class="blank-hint">(15) Phase 1 action (base verb)</span>
+      </span>. 
+      In 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b16" placeholder="e.g. phase 2" oninput="updatePreview()">
+        <span class="blank-hint">(16) Phase 2 / Stage 2</span>
+      </span>, 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b17" placeholder="e.g. filming permits will be obtained" oninput="updatePreview()">
+        <span class="blank-hint">(17) Phase 2 action (passive: will be + p.p.)</span>
+      </span>. 
+      Furthermore, 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b18" placeholder="e.g. rehearsals will be scheduled" oninput="updatePreview()">
+        <span class="blank-hint">(18) Additional action (passive)</span>
+      </span>. 
+      In 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b19" placeholder="e.g. the final phase" oninput="updatePreview()">
+        <span class="blank-hint">(19) The final phase / stage</span>
+      </span>, 
+      we will 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b20" placeholder="e.g. edit the footage and test submissions" oninput="updatePreview()">
+        <span class="blank-hint">(20) Final phase action</span>
+      </span>
+      to 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b21" placeholder="e.g. ensure technical compatibility" oninput="updatePreview()">
+        <span class="blank-hint">(21) Purpose (base verb)</span>
+      </span>.
+      <br><br>
+      <strong>b. Amount of Funding Requested:</strong><br>
+      It is estimated that a total of 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b22" placeholder="e.g. $1,000,000" oninput="updatePreview()">
+        <span class="blank-hint">(22) Total funding amount (HK$)</span>
+      </span> 
+      will be required for the project. For details of the breakdown of the costs, please refer to the attachment.
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-title">Step 3: Justification for Funding (Unit 4)</div>
+      <span class="source-badge">Source: Handwritten Notes (3 Benefits)</span>
+    </div>
+    <div class="prompt-block">
+      Present 3 distinct benefits with non-finite verb-ing phrases, relative clauses, and alignment with the funding scheme.
+    </div>
+    <div class="template-text">
+      The project will 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b23" placeholder="e.g. provide / offer / feature" oninput="updatePreview()">
+        <span class="blank-hint">(23) provide / offer / feature</span>
+      </span>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b24" placeholder="e.g. a platform for emerging creators" oninput="updatePreview()">
+        <span class="blank-hint">(24) Benefit 1 (output)</span>
+      </span>, 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b25" placeholder="e.g. strengthening / encouraging" oninput="updatePreview()">
+        <span class="blank-hint">(25) verb-ing participle</span>
+      </span>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b26" placeholder="e.g. the industry's creative pipeline" oninput="updatePreview()">
+        <span class="blank-hint">(26) Elaboration / broader impact</span>
+      </span>.
+      <br><br>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b27" placeholder="e.g. In addition, / Additionally," oninput="updatePreview()">
+        <span class="blank-hint">(27) Linking adverb</span>
+      </span>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b28" placeholder="e.g. the funding / participants" oninput="updatePreview()">
+        <span class="blank-hint">(28) Subject</span>
+      </span>
+      will 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b29" placeholder="e.g. enable us to secure essential resources" oninput="updatePreview()">
+        <span class="blank-hint">(29) Benefit 2</span>
+      </span>, 
+      which 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b30" placeholder="e.g. helps to ensure high-quality production" oninput="updatePreview()">
+        <span class="blank-hint">(30) Relative clause elaboration (which + verb)</span>
+      </span>.
+      <br><br>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b31" placeholder="e.g. Furthermore, / Moreover," oninput="updatePreview()">
+        <span class="blank-hint">(31) Transition</span>
+      </span>
+      the aim of the project 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b32" placeholder="e.g. closely aligns with / is in line with" oninput="updatePreview()">
+        <span class="blank-hint">(32) Alignment verb phrase</span>
+      </span>
+      the mission and values of 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b33" placeholder="e.g. the CreateSmart Initiative" oninput="updatePreview()">
+        <span class="blank-hint">(33) Funding body / scheme name</span>
+      </span>. 
+      It will 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b34" placeholder="e.g. contribute greatly to / result in" oninput="updatePreview()">
+        <span class="blank-hint">(34) Impact participle (contribute to / foster)</span>
+      </span>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b35" placeholder="e.g. the sustainable growth of local industries" oninput="updatePreview()">
+        <span class="blank-hint">(35) Long-term community impact</span>
+      </span>.
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-title">Step 4: Supplementary Information & Conclusion (Unit 5)</div>
+      <span class="source-badge">Source: Handwritten Notes & Meeting Notes</span>
+    </div>
+    <div class="prompt-block">
+      Acknowledge concerns professionally, propose a concrete counter-measure, and conclude with a forward-looking summary.
+    </div>
+    <div class="template-text">
+      We 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b36" placeholder="e.g. are aware that / acknowledge" oninput="updatePreview()">
+        <span class="blank-hint">(36) are aware / acknowledge</span>
+      </span>
+      there might be concerns about 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b37" placeholder="e.g. technical issues such as server lag" oninput="updatePreview()">
+        <span class="blank-hint">(37) Potential concern / risk</span>
+      </span>. 
+      However, 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b38" placeholder="e.g. please rest assured that we will" oninput="updatePreview()">
+        <span class="blank-hint">(38) Reassurance phrase</span>
+      </span>
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b39" placeholder="e.g. conduct pre-event stress tests" oninput="updatePreview()">
+        <span class="blank-hint">(39) Solution / countermeasure</span>
+      </span>
+      so that / in order to 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b40" placeholder="e.g. a smooth experience will be guaranteed" oninput="updatePreview()">
+        <span class="blank-hint">(40) Intended safeguard / outcome</span>
+      </span>.
+      <br><br>
+      We are confident that 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b41" placeholder="e.g. organising the esports tournament" oninput="updatePreview()">
+        <span class="blank-hint">(41) Project action (verb-ing phrase / noun)</span>
+      </span>, 
+      which 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b42" placeholder="e.g. showcases outstanding local talent" oninput="updatePreview()">
+        <span class="blank-hint">(42) Project aim (from meeting notes)</span>
+      </span>, 
+      will 
+      <span class="blank-wrapper">
+        <input class="blank-input" id="b43" placeholder="e.g. foster positive perception among the public" oninput="updatePreview()">
+        <span class="blank-hint">(43) Summary of positive outcome</span>
+      </span>.
+    </div>
+  </section>
+
+  <!-- LIVE PREVIEW SECTION -->
+  <section class="card" id="preview-section">
+    <div class="card-header">
+      <div class="card-title">Live Preview: Generated Funding Proposal</div>
+      <span class="source-badge">Real-time Student Preview</span>
+    </div>
+    <div class="live-preview-box" id="proposal-output">Fill in the fields above to see your complete funding proposal text generated here in real-time...</div>
+  </section>
+
+  <!-- SUMMARY CHECKLIST -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-title">Summary Checklist for Students</div>
+      <span class="source-badge">Assessment Matrix</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Blank Numbers</th>
+          <th>Target Grammar & Language Skill</th>
+          <th>Source Stimulus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>(1) – (10)</td>
+          <td>Past participle founding clauses, specialized adjectives, and infinitive of purpose</td>
+          <td>Homepage</td>
+        </tr>
+        <tr>
+          <td>(11) – (21)</td>
+          <td>Future passive (will be + p.p.), active stage sequencing, and purpose clauses</td>
+          <td>Notes of Meeting</td>
+        </tr>
+        <tr>
+          <td>(22)</td>
+          <td>Passive cost estimation and reference to attachments</td>
+          <td>Notes of Meeting</td>
+        </tr>
+        <tr>
+          <td>(23) – (30)</td>
+          <td>Participial clauses (-ing) and non-defining relative clauses (which + verb)</td>
+          <td>Handwritten Notes</td>
+        </tr>
+        <tr>
+          <td>(31) – (35)</td>
+          <td>Alignment verbs & prepositional participles (contributing to / resulting in)</td>
+          <td>Handwritten Notes / Funder Info</td>
+        </tr>
+        <tr>
+          <td>(36) – (40)</td>
+          <td>Concession & reassurance signaling (However, please rest assured that...)</td>
+          <td>Handwritten Notes</td>
+        </tr>
+        <tr>
+          <td>(41) – (43)</td>
+          <td>Gerund subject + embedded relative clause (which...) + modal prediction</td>
+          <td>Meeting Notes + Handwritten Notes</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<script>
+  function v(id, placeholder) {
+    var val = document.getElementById(id).value.trim();
+    return val ? val : "[" + placeholder + "]";
+  }
+
+  function updatePreview() {
+    var text = "";
+    
+    // Step 1
+    text += "1. Organisation Information\n";
+    text += v("b1", "Formed") + " in " + v("b2", "Year") + ", " + v("b3", "Organisation Name") + " is a/an " + v("b4", "business nature") + " " + v("b5", "devoted to") + " " + v("b6", "core expertise") + ". " + v("b7", "Additionally,") + " we " + v("b8", "host") + " " + v("b9", "services") + " to " + v("b10", "purpose") + ".\n\n";
+
+    // Step 2
+    text += "2. Project Details (Implementation & Funding Requested)\n";
+    text += "The project will be completed in " + v("b11", "three phases") + ", each " + v("b12", "lasting") + " " + v("b13", "duration") + ". In " + v("b14", "phase 1") + ", we will " + v("b15", "phase 1 action") + ". In " + v("b16", "phase 2") + ", " + v("b17", "action will be conducted") + ". Furthermore, " + v("b18", "additional action") + ". In " + v("b19", "the final phase") + ", we will " + v("b20", "final action") + " to " + v("b21", "purpose") + ".\n\n";
+    text += "It is estimated that a total of " + v("b22", "$XXX,XXX") + " will be required for the project. For details of the breakdown of the costs, please refer to the attachment.\n\n";
+
+    // Step 3
+    text += "3. Justification for Funding\n";
+    text += "The project will " + v("b23", "provide") + " " + v("b24", "Benefit 1") + ", " + v("b25", "strengthening") + " " + v("b26", "broader impact") + ". " + v("b27", "In addition,") + " " + v("b28", "the funding") + " will " + v("b29", "Benefit 2") + ", which " + v("b30", "helps to ensure outcome") + ". " + v("b31", "Furthermore,") + " the aim of the project " + v("b32", "closely aligns with") + " the mission and values of " + v("b33", "Funder") + ". It will " + v("b34", "contribute to") + " " + v("b35", "long-term impact") + ".\n\n";
+
+    // Step 4
+    text += "4. Supplementary Information & Conclusion\n";
+    text += "We " + v("b36", "are aware that") + " there might be concerns about " + v("b37", "potential concern") + ". However, " + v("b38", "please rest assured that we will") + " " + v("b39", "solution") + " so that " + v("b40", "safeguard") + ".\n\n";
+    text += "We are confident that " + v("b41", "organising the project") + ", which " + v("b42", "project aim") + ", will " + v("b43", "summary of positive outcome") + ".";
+
+    document.getElementById("proposal-output").innerText = text;
+  }
+
+  function toggleHints() {
+    var hints = document.querySelectorAll('.blank-hint');
+    hints.forEach(function(h) {
+      h.style.display = (h.style.display === 'none') ? 'block' : 'none';
+    });
+  }
+
+  function clearAll() {
+    if (confirm("Are you sure you want to clear all fields?")) {
+      var inputs = document.querySelectorAll('.blank-input');
+      inputs.forEach(function(i) { i.value = ""; });
+      updatePreview();
+    }
+  }
+
+  function copyPreview() {
+    var text = document.getElementById("proposal-output").innerText;
+    navigator.clipboard.writeText(text).then(function() {
+      alert("Completed proposal copied to clipboard!");
+    }, function() {
+      alert("Unable to copy automatically. Please select the text manually.");
+    });
+  }
+</script>
+
+</body>
+</html>
